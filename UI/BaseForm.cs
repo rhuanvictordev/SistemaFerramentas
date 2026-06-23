@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace SistemaFerramentas
 {
@@ -15,6 +9,12 @@ namespace SistemaFerramentas
         public BaseForm()
         {
             InitializeComponent();
+        }
+
+        private void BaseForm_Load(object sender, EventArgs e)
+        {
+            string versao = ConfigurationManager.AppSettings["AppVersion"];
+            this.Text = $"Sistema de Ferramentas - Versão {versao}";
         }
     }
 }

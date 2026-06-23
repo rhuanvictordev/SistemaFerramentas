@@ -34,10 +34,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 180);
+            this.ClientSize = new System.Drawing.Size(666, 406);
             this.Name = "BaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Ferramentas";
+            this.Load += new System.EventHandler(this.BaseForm_Load);
             this.ResumeLayout(false);
 
         }

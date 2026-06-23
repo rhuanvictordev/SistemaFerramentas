@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A5034F31-1875-48CA-A740-A0EC6B299C66}</ProjectGuid>
+    <ProjectGuid>{D525E686-91B9-4C06-BB89-C8600477C79F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SistemaFerramentas</RootNamespace>
-    <AssemblyName>SistemaFerramentas</AssemblyName>
+    <RootNamespace>Updater</RootNamespace>
+    <AssemblyName>Updater</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,7 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,17 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\BaseForm.cs">
+    <Compile Include="UI\Atualizador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <Compile Include="UI\Atualizador.Designer.cs">
+      <DependentUpon>Atualizador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Database.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Atualizador.resx">
+      <DependentUpon>Atualizador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
