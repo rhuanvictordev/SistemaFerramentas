@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ApiResponse.cs" />
     <Compile Include="UI\Atualizador.cs">
       <SubType>Form</SubType>
     </Compile>
