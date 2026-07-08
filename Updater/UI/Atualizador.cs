@@ -20,7 +20,7 @@ namespace Updater
         private string AppName = ConfigurationManager.AppSettings["AppName"];
         private string AppKeyName = ConfigurationManager.AppSettings["AppKeyName"];
         private string AppVersion = ConfigurationManager.AppSettings["AppVersion"];
-        private string ServerUrl = ConfigurationManager.AppSettings["ServerUrl"];
+        private string ServerUrl = ConfigurationManager.AppSettings["BaseApiUrl"];
 
         public Atualizador(HttpClient httpClient)
         {
@@ -35,13 +35,14 @@ namespace Updater
             lblInfo.Text = !infoMessage.Equals(String.Empty) ? infoMessage : lblInfo.Text;
         }
 
-        private void Atualizador_Load(object sender, EventArgs e)
+        private async void Atualizador_Load(object sender, EventArgs e)
         {
             lblNomeSistema.Text = $"{AppName}   [ Atualizador ]";
-            string versaoRecebida = VerificarVersaoAtual(ServerUrl, AppKeyName);
+            string versaoRecebida = await VerificarVersaoAtual(ServerUrl, AppKeyName);
+
             if (!versaoRecebida.Equals(String.Empty))
             {
-                notificarUI("", "Sucesso!");
+                notificarUI("", $"Sucesso! {versaoRecebida}");
             }
             else 
             {
@@ -49,18 +50,17 @@ namespace Updater
             }
         }
 
-        private string VerificarVersaoAtual(string serverUrl, string appName)
+        private async Task<string> VerificarVersaoAtual(string serverUrl, string appKeyName)
         {
             try
             {
-                Object requestBody = new { appName = appName };
+                Object requestBody = new { appKeyName = appKeyName };
                 string json = JsonConvert.SerializeObject(requestBody);
-                //MessageBox.Show(json);
-
-                /*HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await _httpClient.PostAsync(serverUrl, content);*/
                 
-                return "1.0";
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync($"{serverUrl}/CheckVersion", content);
+
+                return await response.Content.ReadAsStringAsync();
 
             }
             catch (Exception ex) 
